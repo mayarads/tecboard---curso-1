@@ -91,7 +91,7 @@ section img{
 
 }
 
-@media(max-width: 375px){
+@media(max-width: 370px){
     
     header img{
         margin: 32px 0 0 16px;    
@@ -101,6 +101,7 @@ section img{
     }
 
     p{
+        
         font-size: 20px;
         width: 340px;
     }
