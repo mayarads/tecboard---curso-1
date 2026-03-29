@@ -15,22 +15,69 @@
     font-style: normal;
     font-display: swap;
 }
+/* Variáveis de tema */
+:root{
+    --bg: #0E1014;
+    --text: #FFFFFF;
+    --accent: #9747FF;
+    --accent-hover: #8233E8;
+}
+
+.light-theme{
+    --bg: #FFFFFF;
+    --text: #0E1014;
+    --accent: #9747FF;
+    --accent-hover: #8233E8;
+}
 /*Reset*/
 *{
     margin: 0;
     padding: 0;
-    /*box-sizing: border-box;*/
+    box-sizing: border-box;
 }
 /*Estilo Desktop*/
 body{
-    background-color: #0E1014;
-    color: #FFFFFF;
-    
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "poppins", sans-serif;
 }
 
+/* Cabeçalho */
+header{
+    position: relative;
+}
 header img{
-    display: block;
-    margin: 75px 0 0 360px;
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    max-width: 180px;
+    width: auto;
+    height: auto;
+    z-index: 1000;
+}
+
+/* Espaço superior para o conteúdo, evitando sobreposição do logo fixo */
+main{
+    padding-top: 110px;
+}
+
+/* Botão de alternância de tema */
+#theme-toggle{
+    position: fixed;
+    top: 18px;
+    right: 16px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1200;
+}
+
+.light-theme #theme-toggle{
+    background: rgba(0,0,0,0.06);
+    color: var(--text);
 }
 
 h1 span{
@@ -38,80 +85,102 @@ h1 span{
 }
 
 h1{
-    font-family: "poppins", sans-serif;
-    font-size: 80px;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: clamp(32px, 6vw, 80px);
     text-align: center;
     margin-top: 60px;
+    line-height: 1.05;
 }
 
 p{
-    font-family: "poppins", sans-serif;
-    font-size: 24px;
+    font-size: clamp(16px, 2.2vw, 24px);
     text-align: center;
     margin: 24px auto 0;
-    width: 792px;
+    width: 90%;
+    max-width: 792px;
 }
 
 a{
-    font-family: "poppins", sans-serif;
-    color: #FFFFFF;
-    font-size: 24px;
+    color: var(--text);
+    font-size: clamp(16px, 2.2vw, 24px);
     text-decoration: none;
-    background-color: #9747FF;
-    width: 340PX;
-    height: 66px;
-    display: block;
+    background-color: var(--accent);
+    display: inline-block;
+    padding: 18px 36px;
     text-align: center;
-    line-height: 66px;
     border-radius: 36px;
-    margin: 40px auto 0; 
+    margin: 40px auto 0;
+    min-width: 160px;
+}
+
+/* Botão fixo central (CTA) */
+.fixed-cta{
+    /* Posicionado no fluxo do documento, centralizado antes da imagem */
+    position: relative;
+    display: inline-block;
+    margin: 40px 0 0;
+    transform: none;
+    z-index: auto;
+    max-width: 340px;
+    width: auto;
+}
+
+@media (max-width: 380px){
+    .fixed-cta{
+        min-width: 0;
+        padding: 12px 20px;
+        font-size: 16px;
+    }
 }
 
 a:hover{
-    background-color: #8233E8;
+    background-color: var(--accent-hover);
 }
 
 section img{
     display: block;
-    width: 792px;
-    height: 446px;
-    margin: 0 auto;
+    width: 90%;
+    max-width: 792px;
+    height: auto;
+    margin: 24px auto 0;
+}
+
+/* Centraliza elementos inline dentro da section */
+section{
+    text-align: center;
 }
 
 @media(max-width: 768px){
-    
     header img{
-        margin: 65px 0 0 60px;    
+        margin: 40px auto 0;
     }
 
     p{
-        width: 648px;
+        width: 92%;
     }
 
 }
 
 @media(max-width: 370px){
-    
     header img{
-        margin: 32px 0 0 16px;    
+        margin: 24px auto 0;
     }
+
     h1{
-        font-size: 40px;
+        font-size: clamp(28px, 7vw, 40px);
     }
 
     p{
-        
-        font-size: 20px;
-        width: 340px;
+        font-size: 18px;
+        width: 88%;
     }
     a{
-        font-size: 20px;
-        width: 251px;
+        font-size: 18px;
+        padding: 14px 28px;
     }
     section img{
-        width: 340px;
-        height: 230px;
+        width: 88%;
+        height: auto;
     }
 
 }
